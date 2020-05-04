@@ -37,4 +37,15 @@ const changeInputField = (entryFragger) => {
   suggestionField.style.display = "none";
 };
 
+// Youtube api call
+const youTubeApi = (searchText) => {
+  console.log(`Hello YouTube: ${searchText}`);
+};
+
 inputField.addEventListener("input", () => searchSuggestion(inputField.value));
+inputField.addEventListener("keydown", (e) => {
+  if (e.keyCode === 13) {
+    suggestionField.style.display = "none";
+    youTubeApi(inputField.value);
+  }
+});
