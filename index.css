@@ -119,3 +119,7 @@ body {
   box-shadow: 0 0 25px 0 rgba(143, 59, 76, 0.651),
     0 20px 25px 0 rgba(0, 0, 0, 0.267);
 }
+
+.show-suggestion:hover {
+  cursor: pointer;
+}
