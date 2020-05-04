@@ -44,7 +44,7 @@ const youTubeApi = (searchText) => {
 
 inputField.addEventListener("input", () => searchSuggestion(inputField.value));
 inputField.addEventListener("keydown", (e) => {
-  if (e.keyCode === 13) {
+  if (inputField.value && e.keyCode === 13) {
     suggestionField.style.display = "none";
     youTubeApi(inputField.value);
   }
