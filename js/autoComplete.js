@@ -3,7 +3,21 @@ const suggestionField = document.getElementById("suggestion");
 
 let container = [];
 
-const searchSuggestion = (input) => {
+/* @param callImmediate
+ * type - bool
+ * required - NO
+ * optional - YES
+ */
+const debounce = (fn, delay, callImmediate) => {
+  let timeout;
+  return (...rest) => {
+    const context = this;
+    clearTimeout(timeout);
+    timeout = setTimeout(() => fn.apply(context, rest), delay);
+  };
+};
+
+const searchSuggestion = debounce((input) => {
   container.push(input);
 
   let filteredItems = container.filter((el) => {
@@ -15,8 +29,9 @@ const searchSuggestion = (input) => {
     filteredItems = [];
     suggestionField.innerHTML = "";
   }
+  console.log(filteredItems);
   showSuggestions(filteredItems);
-};
+}, 1000);
 
 const showSuggestions = (items) => {
   if (items.length > 0) {
